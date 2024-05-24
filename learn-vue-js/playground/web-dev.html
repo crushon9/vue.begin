@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기존 웹 개발 방식</title>
+</head>
+<body>
+    <div id="app">
+        
+    </div>
+
+    <script>
+        var div = document.querySelector('#app');
+        console.log(div);
+        var str = 'hello world!';
+        div.innerHTML = str;
+
+        str = 'update';
+        div.innerHTML = str; // 업데이트시 다시 출력해야 바뀐 값으로 적용됨
+    </script>
+</body>
+</html>

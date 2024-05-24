@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reactivity(반응성)</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        var div = document.querySelector('#app');
+        var viewModel = {};
+
+        // 즉시실행함수(IIFE) : 함수를 정의하자마자 즉시 호출하는 패턴, 스코프관리에 효과적
+        (function() {
+            function init() {
+                // Object.defineProperty() static method
+                //  : 객체에 새로운 속성을 직접 정의하거나 이미 존재하는 속성을 수정한 후, 해당객체 반환
+                Object.defineProperty(viewModel, 'str', {
+                    get: function () {
+                        console.log('get');
+                    },
+                    set: function (newVal) {
+                        console.log('set : ', newVal);
+                        render(newVal);
+                        // 반응성 : 데이터의 변화를 라이브러리에서 감지해서 화면을 자동으로 그려줌
+                    }
+                });
+            }
+
+            function render(newVal) {
+                div.innerHTML = newVal;
+            }
+
+            init();
+        })();
+        
+    </script>
+</body>
+</html>
