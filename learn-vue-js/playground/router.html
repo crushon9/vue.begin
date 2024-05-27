@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>router</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- router-view : Vue객체에 VueRouter객체가 연결되었을때 사용가능한 내장태그 
+                       url에 매칭되는 component가 router-view 태그 영역에 뿌려짐-->
+    <router-view></router-view>
+
+    <div>
+    <!-- router-link : html a태그처럼 클릭하면 url이동하는 태그-->
+      <router-link to="/login">Login</router-link>
+      <router-link to="/main">Main</router-link>
+    </div>
+  </div>
+
+  <!--CDN 방식 주의사항 : vue 를 먼저 넣고 router 넣기 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+
+  <script>
+    var LoginComponent = {
+      template: '<div>login</div>'
+    }
+    var MainComponent = {
+      template: '<div>main</div>'
+    }
+
+    var router = new VueRouter({
+      mode: 'history',
+      routes: [ // 페이지의 라우팅 정보 배열
+        {
+          path: '/login', // url
+          component: LoginComponent, // 표시될 컴포넌트
+          // url과 컴포넌트는 일대일 매칭
+        },
+        {
+          path: '/main',
+          component: MainComponent
+        }
+      ]
+    });
+
+    new Vue({
+      el: '#app',
+      router: router,
+    });
+  </script>
+</body>
+
+</html>
