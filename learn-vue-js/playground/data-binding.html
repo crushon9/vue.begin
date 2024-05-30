@@ -5,10 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>data binding</title>
+  <style>
+    .text-blue {
+      color: blue;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
+    <!-- HTML의 속성에는 {{ mustached }}를 사용할 수 없습니다.
+    v-bind 디렉티브를 사용하여 Vue 인스턴스 내에 선언된 값을 
+    HTML 코드의 속성 값에 사용할 수 있습니다.
+    v-bind 약어 : , v-on 약어 @ -->
+    
     <p v-bind:id="doubleNum" v-bind:class="name">{{ num }}</p>
     <!-- 결과 <p id="abc1234" class="text-blue">{{ num }}</p> -->
     <p>{{ doubleNum }}</p>
@@ -28,12 +38,6 @@
     <input type="text" v-model="message"/>
     <p>{{ message }}</p>
   </div>
-
-    <style>
-      .text-blue {
-        color: blue;
-      }
-    </style>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>

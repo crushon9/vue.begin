@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>watch-vs-computed</title>
+</head>
+<body>
+  <div id="app">
+    {{ num }}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10
+      },
+      // 컴퓨티드는 값이 변하면 덮어씌우며 반영함
+      // 와치는 값이 변하면 이전값과 새값을 추적하고있음
+      computed: { // 단순처리, 프론트에서 로직처리할때, 유효성검사..
+        doubleNum: function() {
+          return this.num * 2;
+        }
+      },
+      watch: { // 값의 변화를 추적하고있음, 무거운처리
+        num: function(newValue, oldValue) { // 기본파라미터(새값,이전값)
+          this.fetchUserByNumber(newValue);
+        }
+      },
+      methods: {
+        fetchUserByNumber: function(num) {
+          // console.log(num);
+          axios.get(num);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
