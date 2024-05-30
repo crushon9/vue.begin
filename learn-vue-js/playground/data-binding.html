@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>data binding</title>
+</head>
+
+<body>
+  <div id="app">
+    <p v-bind:id="doubleNum" v-bind:class="name">{{ num }}</p>
+    <!-- 결과 <p id="abc1234" class="text-blue">{{ num }}</p> -->
+    <p>{{ doubleNum }}</p>
+  
+    <!-- if-else는 태그제거, show는 display:none -->
+    <div v-if="boolean">
+      Loading...
+    </div>
+    <div v-else>
+      test user has been logged in
+    </div>
+    <div v-show="boolean">
+      if true show
+    </div>
+
+    <!-- v-model 속성은 v-bind와 v-on의 기능의 조합으로 동작 -->
+    <input type="text" v-model="message"/>
+    <p>{{ message }}</p>
+  </div>
+
+    <style>
+      .text-blue {
+        color: blue;
+      }
+    </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10,
+        // doubleNum : 999, 같은이름이 있으면 data 속성이 computed 속성보다 우위
+        name: 'text-blue',
+        boolean: true,
+        message: ''
+      },
+      computed: {
+        doubleNum: function() {
+          return this.num * 2;
+        },
+      }
+    })
+  </script>
+</body>
+</html>
