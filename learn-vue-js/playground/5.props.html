@@ -7,6 +7,7 @@
 </head>
 <body>
     <div id="app">
+        <h1>컴포넌트통신 (상위->하위)</h1>
         <!-- <app-header v-bind:프롭스 속성이름="상위 컴포넌트의 데이터 이름"></app-header> -->
         <app-header v-bind:propsdata="message" v-bind:nm="name"></app-header>
         <app-content v-bind:propsdata="num"></app-content>

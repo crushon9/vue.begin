@@ -9,6 +9,7 @@
 
 <body>
     <div id="app">
+        <h1>컴포넌트통신 (하위->상위)</h1>
         <!-- <app-header v-on:하위컴포넌트 이벤트 이름="상위컴포넌트 메서드 이름"></app-header> -->
         <app-header v-on:pass="logText"></app-header>
         <app-content v-on:add="addNum"></app-content>
